@@ -17,6 +17,8 @@ public class PoolConfig {
     public KryoPool newKryoPool() {
         return new KryoPool.Builder(() -> {
             final Kryo kryo = new Kryo();
+            kryo.setReferences(false);
+            kryo.setRegistrationRequired(false);
             kryo.setInstantiatorStrategy(new Kryo.DefaultInstantiatorStrategy(
                     new StdInstantiatorStrategy()));
             return kryo;
